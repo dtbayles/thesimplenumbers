@@ -74,42 +74,42 @@ export default function Home() {
       id: 1,
       delay: '',
       viewBox: "0 0 64 64",
-      title: 'Financial Planning',
+      title: 'Close Process',
       description: "Comprehensive financial strategy tailored to personal and business needs.",
     },
     {
       id: 2,
       delay: '100',
       viewBox: "0 0 64 64",
-      title: 'Tax Preparation',
+      title: 'ERP Selection/Implementation',
       description: "Expert tax services to ensure you're saving the most and compliant with laws.",
     },
     {
       id: 3,
       delay: '200',
       viewBox: "0 0 64 64",
-      title: 'Bookkeeping',
+      title: 'Product Analysis',
       description: "Accurate and efficient bookkeeping to keep your finances in order.",
     },
     {
       id: 4,
       delay: '300',
       viewBox: "0 0 64 64",
-      title: 'Investment Advice',
+      title: 'Inventory Optimization',
       description: "Smart investment strategies to help your wealth grow safely.",
     },
     {
       id: 5,
       delay: '400',
       viewBox: "0 0 64 64",
-      title: 'Retirement Planning',
+      title: 'Supply Chain Management',
       description: "Plan for the future with personalized retirement strategies.",
     },
     {
       id: 6,
       delay: '500',
       viewBox: "0 0 64 64",
-      title: 'Budgeting Advice',
+      title: 'Budgeting and Forecasting',
       description: "Practical budgeting tips and strategies to improve financial health.",
     },
   ];
@@ -150,10 +150,10 @@ export default function Home() {
                 <div className="text-center lg:text-left">
                   <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                     <span className="block text-indigo-600 xl:inline">Simplify</span>{' '}
-                    <span className="block xl:inline">Your Finances</span>
+                    <span className="block xl:inline">Your Numbers</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                    Expert financial advice, bookkeeping, and tax services tailored for you.
+                    Accurate and Timely Financials, ERP Selection, Operational Excellence
                   </p>
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
@@ -166,10 +166,10 @@ export default function Home() {
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-3">
                       <a
-                        onClick={smoothScroll('#book')}
+                        onClick={smoothScroll('#contact')}
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                       >
-                        Schedule Now
+                        Contact Us
                       </a>
                       <Modal
                         isOpen={modalIsOpen}
@@ -216,11 +216,11 @@ export default function Home() {
           <div className="py-12 md:py-20">
 
             {/* Section header */}
-            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-              <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Services</h2>
-              <h2 className="h2 mb-4 text-gray-900">A better way to style.</h2>
-              <p className="text-xl text-gray-600">Offering a wide range of hairstyling services, Mane Voyage specializes in meeting your hair needs on the go.</p>
-            </div>
+            {/*<div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">*/}
+            {/*  <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Services</h2>*/}
+            {/*  <h2 className="h2 mb-4 text-gray-900">A better way to style.</h2>*/}
+            {/*  <p className="text-xl text-gray-600">Offering a wide range of hairstyling services, Mane Voyage specializes in meeting your hair needs on the go.</p>*/}
+            {/*</div>*/}
 
             {/* Items */}
             <div
@@ -238,7 +238,7 @@ export default function Home() {
                     <path className="stroke-current text-purple-300" d="M43 42h-9M43 37h-9" strokeLinecap="square"
                           strokeWidth="2"/>
                   </svg>
-                  <h4 className="h4 mb-2 text-gray-900">{service.title}</h4>
+                  <h4 className="h4 mb-2 text-gray-900 -mx-10">{service.title}</h4>
                   <p className="text-lg text-gray-500 text-center">{service.description}</p>
                 </div>
               ))}
@@ -250,78 +250,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Pricing</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Choose Your Plan
-            </p>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Select the best plan that fits your needs. All plans include our high-quality products and services.
-            </p>
-          </div>
-          <div className="mt-10">
-            <div className="flex flex-wrap justify-center gap-8">
-              {pricingPlans.map(plan => (
-                <div key={plan.id} className="text-center shadow-lg p-6 rounded-lg max-w-sm w-full bg-white">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">{plan.name}</h3>
-                  <div className="mt-4 items-baseline text-6xl leading-none font-extrabold text-indigo-600">
-                    ${plan.price}
-                  </div>
-                  <div className="mt-5 mb-8 text-gray-500">
-                    {plan.features.map(feature => (
-                      <p key={feature}>{feature}</p>
-                    ))}
-                  </div>
-                  {/*<button className="mt-auto bg-indigo-600 text-white font-bold py-2 px-4 rounded hover:bg-indigo-700">*/}
-                  {/*  Choose {plan.name}*/}
-                  {/*</button>*/}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Section */}
-      <section className="py-12 bg-gray-50" id="book">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Booking</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Schedule an Appointment
-            </p>
-            <p className="mt-4 text-lg leading-6 text-gray-500">
-              Use our online scheduling tool to book your next appointment.
-            </p>
-          </div>
-          <div className="flex justify-center">
-            <div className="w-full max-w-lg">
-              <div className="bg-white overflow-hidden shadow rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
-                  {/* Your Calendly Link */}
-                  <div className="calendly-inline-widget" style={{minWidth: '320px', height: '630px'}} data-url="https://calendly.com/drew-i96j/30min" />
-                  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Us section */}
       <section id="contact" className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Get in Touch</h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Book Your Next Appointment
+              Contact Us
             </p>
             <p className="mt-4 text-lg leading-6 text-gray-500">
-              Have any questions or want to book an appointment? Fill out the form below, and we'll get back to you as
-              soon as possible.
+              Please fill out the form below for information
             </p>
           </div>
           <div className="flex justify-center">
