@@ -22,7 +22,7 @@ export default function Footer() {
                   </svg>
                 </Link>
               </div>
-              <div className="text-gray-400">{COMPANY_NAME} offers expert financial advice, bookkeeping, and tax services.</div>
+              <div className="text-gray-400">Accurate and Timely Financials, ERP Selection, Operational Excellence</div>
             </div>
 
             {/* 2nd, 3rd and 4th blocks */}
@@ -40,29 +40,29 @@ export default function Footer() {
 
               {/* 4th block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">{COMPANY_NAME}</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link href="/"
-                          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Home</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/#services"
-                          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Services</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/#pricing"
-                          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Pricing</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/#booking"
-                          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Booking</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link href="/#contact"
-                          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Get in touch</Link>
-                  </li>
-                </ul>
+                {/*<h6 className="text-gray-200 font-medium mb-1">{COMPANY_NAME}</h6>*/}
+                {/*<ul>*/}
+                {/*  <li className="mb-1">*/}
+                {/*    <Link href="/"*/}
+                {/*          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Home</Link>*/}
+                {/*  </li>*/}
+                {/*  <li className="mb-1">*/}
+                {/*    <Link href="/#services"*/}
+                {/*          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Services</Link>*/}
+                {/*  </li>*/}
+                {/*  <li className="mb-1">*/}
+                {/*    <Link href="/#pricing"*/}
+                {/*          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Pricing</Link>*/}
+                {/*  </li>*/}
+                {/*  <li className="mb-1">*/}
+                {/*    <Link href="/#booking"*/}
+                {/*          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Booking</Link>*/}
+                {/*  </li>*/}
+                {/*  <li className="mb-1">*/}
+                {/*    <Link href="/#contact"*/}
+                {/*          className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Get in touch</Link>*/}
+                {/*  </li>*/}
+                {/*</ul>*/}
               </div>
 
             </div>
