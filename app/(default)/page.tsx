@@ -119,7 +119,7 @@ export default function Home() {
   const colors = {
     primary: '#bed99b',
     primaryHover: '#a8c985',
-    secondary: '#9b8dbb',
+    secondary: '#192a21',
     background: '#ffffff',
     text: '#111827',
     textSecondary: '#6b7280',
@@ -469,6 +469,7 @@ export default function Home() {
               </ul>
 
               {/* Copyrights note */}
+              <div className="flex">
               <div className="text-gray-400 text-sm mr-4">
                 <p>© {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
                 <p>Designed and developed by <a href="https://redfishgo.com"
@@ -476,6 +477,15 @@ export default function Home() {
                                                 target="_blank"
                                                 rel="noopener noreferrer">RedfishGo</a>.
                 </p>
+              </div>
+                <Link href="https://redfishgo.com" target="_blank" className="inline-block" aria-label="Cruip">
+                  <Image
+                    src="/images/rf-go-logo-dark.svg"
+                    alt="logo"
+                    width={60}
+                    height={15}
+                  />
+                </Link>
               </div>
 
             </div>
