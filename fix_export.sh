@@ -13,10 +13,12 @@ directory="out"
 function modify_paths {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS requires an empty string after -i to specify no backup
-        sed -i '' 's#"/_next/#"./_next/#g' "$1"
+        sed -i '' 's#"/_next/#"./_next/#g' "$1"   # Making _next paths relative
+        sed -i '' 's#"/images/#"./images/#g' "$1" # Making image paths relative
     else
         # Linux does not need the empty string
         sed -i 's#"/_next/#"./_next/#g' "$1"
+        sed -i 's#"/images/#"./images/#g' "$1"
     fi
 }
 
