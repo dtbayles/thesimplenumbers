@@ -1,26 +1,27 @@
 #!/bin/bash
 
-# Ensures script execution stops on first error
+# Set error handling to exit on any error
 set -e
 
-# Path to the directory containing CSS files
-css_directory="out/_next/static/css"
-chunks_directory="out/_next/static/chunks"
+# Explicitly set the locale to handle text encoding issues
+export LC_ALL=C
 
-# Define and export the function
-sed_inplace() {
-    local file="$1"
-    local pattern="$2"
+# Define the directory to process
+directory="out"
+
+# Using a function to handle the sed operation, adjusting based on OS type
+function modify_paths {
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        sed -i '' "$pattern" "$file"
+        # macOS requires an empty string after -i to specify no backup
+        sed -i '' 's#"/_next/#"./_next/#g' "$1"
     else
-        sed -i "$pattern" "$file"
+        # Linux does not need the empty string
+        sed -i 's#"/_next/#"./_next/#g' "$1"
     fi
 }
-export -f sed_inplace  # Export the function for use in new bash instances
 
-# Replace paths in the CSS
-find "$css_directory" -type f -exec bash -c 'sed_inplace "$0" "s/.\/_next\/static/\.\./g"' {} \;
+# Export the function to make it available to subshells invoked by find
+export -f modify_paths
 
-# Fix regular expressions that are not escaped
-find "$chunks_directory" -type f -exec bash -c 'sed_inplace "$0" "s/\.\\/_next\\/data/.\/_next\/data/g"' {} \;
+# Use find to execute the modify_paths function on each file
+find "$directory" -type f -exec bash -c 'modify_paths "$0"' {} \;
