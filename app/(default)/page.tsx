@@ -76,43 +76,43 @@ export default function Home() {
       id: 1,
       delay: '',
       viewBox: "0 0 64 64",
-      title: 'Close Process',
-      description: "Comprehensive financial strategy tailored to personal and business needs.",
+      title: 'Timely/Accurate Financial Reporting',
+      description: "Establish meaningful close procedures.",
     },
     {
       id: 2,
       delay: '100',
       viewBox: "0 0 64 64",
-      title: 'ERP Selection/Implementation',
-      description: "Expert tax services to ensure you're saving the most and compliant with laws.",
+      title: 'Software Selection/Implementation',
+      description: "Direct selection and implementation.",
     },
     {
       id: 3,
       delay: '200',
       viewBox: "0 0 64 64",
-      title: 'Product Analysis',
-      description: "Accurate and efficient bookkeeping to keep your finances in order.",
+      title: 'Product Economics',
+      description: "Develop product and services costs and margins.",
     },
     {
       id: 4,
       delay: '300',
       viewBox: "0 0 64 64",
-      title: 'Inventory Optimization',
-      description: "Smart investment strategies to help your wealth grow safely.",
+      title: 'Operational Excellence',
+      description: "Implement processes to help with continuous improvement.",
     },
     {
       id: 5,
       delay: '400',
       viewBox: "0 0 64 64",
       title: 'Supply Chain Management',
-      description: "Plan for the future with personalized retirement strategies.",
+      description: "Right Items, right quantities, right price.",
     },
     {
       id: 6,
       delay: '500',
       viewBox: "0 0 64 64",
       title: 'Budgeting and Forecasting',
-      description: "Practical budgeting tips and strategies to improve financial health.",
+      description: "Establish meaningful Budgeting and Forecasting tools and processes.",
     },
   ];
 
@@ -282,12 +282,10 @@ export default function Home() {
                             style={{color: colors.background}}/>
                     </svg>
                     {/* Using the text color for headers and textSecondary for descriptions */}
-                    <h4 className="h4 mb-2 -mx-10" style={{color: colors.text}}>{service.title}</h4>
+                    <h4 className="h4 mb-2 text-center" style={{color: colors.text}}>{service.title}</h4>
                     <p className="text-lg text-center" style={{color: colors.textSecondary}}>{service.description}</p>
                   </div>
                 ))}
-
-
               </div>
 
             </div>
