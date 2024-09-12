@@ -4,6 +4,7 @@ import {FormEvent, useState} from 'react';
 import Image from 'next/image';
 import Modal from 'react-modal';
 import Link from 'next/link';
+import {toast} from "react-toastify";
 
 export default function Home() {
   const COMPANY_NAME = 'The Simple Numbers'
@@ -22,19 +23,67 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Implement the function to send the form data to your server or email service provider
-    console.log({ name, email, message });
-    // Reset the form fields after submission or show a success message
-  };
-
   const smoothScroll = (targetId: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     document.querySelector(targetId)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const data = {name, email, message};
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success('Email sent successfully!', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error(`Error sending email: ${result.message}`, {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } catch (error) {
+      toast.error('Error submitting form. Please try again.', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+    // Reset form fields
+    setName('');
+    setEmail('');
+    setMessage('');
+  }
 
   const pricingPlans = [
     {

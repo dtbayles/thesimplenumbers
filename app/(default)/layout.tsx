@@ -7,6 +7,7 @@ import 'aos/dist/aos.css'
 
 import PageIllustration from '@/components/page-illustration'
 import Footer from '@/components/ui/footer'
+import {ToastContainer} from "react-toastify";
 
 export default function DefaultLayout({
   children,
