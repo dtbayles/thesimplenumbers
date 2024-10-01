@@ -5,6 +5,15 @@ import Image from 'next/image';
 import Modal from 'react-modal';
 import Link from 'next/link';
 import {toast} from "react-toastify";
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+
+const sesClient = new SESClient({
+  region: process.env.AWS_REGION, // Ensure that the AWS region is set in your environment variables
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+  },
+});
 
 export default function Home() {
   const COMPANY_NAME = 'The Simple Numbers'
@@ -33,42 +42,40 @@ export default function Home() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const data = {name, email, message};
+    const params = {
+      Source: process.env.SES_SENDER_EMAIL!, // Verified email
+      Destination: {
+        ToAddresses: [process.env.SES_RECIPIENT_EMAIL!], // The recipient email
+      },
+      Message: {
+        Subject: {
+          Data: `Contact Form Submission from ${name}`,
+          Charset: 'UTF-8',
+        },
+        Body: {
+          Text: {
+            Data: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+            Charset: 'UTF-8',
+          },
+        },
+      },
+    };
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      const command = new SendEmailCommand(params);
+      await sesClient.send(command);
+      toast.success('Email sent successfully!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        toast.success('Email sent successfully!', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      } else {
-        toast.error(`Error sending email: ${result.message}`, {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
     } catch (error) {
-      toast.error('Error submitting form. Please try again.', {
+      console.error('Failed to send email:', error);
+      toast.error(`Error sending email: ${error}`, {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,

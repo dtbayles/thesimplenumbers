@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "rm -rf out/",
     "build": "next build",
     "build-fix": "bash fix_export.sh",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "s3:sync": "npm run build && npm run build-fix && aws s3 sync out/ s3://thesimplenumbers-s3-bucket --delete --acl public-read --profile comdevnet",
+    "test": "aws s3 sync out/ s3://thesimplenumbers-s3-bucket --delete --cache-control must-revalidate --debug --profile comdevnet"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.650.0",
